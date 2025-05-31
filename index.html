@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STEM Academy</title>
+  <style>
+    /* Reset & basics */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6f0ff;
+      color: #0a2e6e;
+      line-height: 1.6;
+    }
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Hero Section */
+    #hero {
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      padding: 6rem 1rem 4rem;
+      text-align: center;
+      box-shadow: inset 0 0 0 2000px rgba(0, 51, 102, 0.6);
+    }
+    #hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    #hero button {
+      background-color: #0099ff;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    #hero button:hover {
+      background-color: #007acc;
+    }
+
+    /* Features Section */
+    #features {
+      padding: 3rem 1rem;
+      background-color: #dbe9ff;
+      text-align: center;
+    }
+    #features h2 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .features-grid {
+      display: flex;
+      justify-content: space-around;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .feature {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .feature:focus,
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #0056b3;
+    }
+    .feature-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-desc {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Courses Section */
+    #courses {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    #courses h2 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .courses-grid {
+      display: flex;
+      justify-content: space-around;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .course {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 320px;
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .course:focus,
+    .course:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .course img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      object-fit: cover;
+      max-height: 180px;
+    }
+    .course-content {
+      padding: 1rem 1.2rem 1.5rem;
+      text-align: left;
+      width: 100%;
+    }
+    .course-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #003366;
+    }
+    .course-desc {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+    .course-btn {
+      background-color: #007acc;
+      border: none;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .course-btn:hover {
+      background-color: #005a99;
+    }
+
+    /* Quiz Section */
+    #quiz {
+      background-color: #dbe9ff;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    #quiz h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #003366;
+    }
+    #quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .quiz-question {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      min-height: 60px;
+      font-weight: 600;
+      color: #002147;
+    }
+    .quiz-options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+    }
+    .quiz-options li {
+      margin-bottom: 0.8rem;
+    }
+    .quiz-options button {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 2px solid #007acc;
+      background-color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-weight: 600;
+      color: #007acc;
+    }
+    .quiz-options button.correct {
+      background-color: #28a745;
+      border-color: #28a745;
+      color: white;
+      cursor: default;
+    }
+    .quiz-options button.incorrect {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      color: white;
+      cursor: default;
+    }
+    .quiz-options button:disabled {
+      cursor: default;
+    }
+    .quiz-footer {
+      margin-top: 1rem;
+    }
+    #next-btn {
+      background-color: #007acc;
+      border: none;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #next-btn:disabled {
+      background-color: #a3c1f7;
+      cursor: not-allowed;
+    }
+    #score-container {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #003366;
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .features-grid, .courses-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .feature, .course {
+        width: 90%;
+      }
+      #hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>STEM Academy</h1>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#courses">Courses</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero" role="banner" aria-label="Welcome message">
+  <div class="container">
+    <h2>Empower Your Mind with STEM</h2>
+    <p>Learn Science, Technology, Engineering, and Mathematics through interactive courses and quizzes.</p>
+    <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">Explore Courses</button>
+  </div>
+</section>
+
+<section id="features" role="region" aria-labelledby="features-title">
+  <h2 id="features-title">Why Choose STEM Academy?</h2>
+  <div class="features-grid">
+    <div class="feature" tabindex="0" role="article" aria-label="Interactive lessons">
+      <div class="feature-icon">🧪</div>
+      <div class="feature-title">Interactive Lessons</div>
+      <div class="feature-desc">Engage with hands-on activities and experiments.</div>
+    </div>
+    <div class="feature" tabindex="0" role="article" aria-label="Expert instructors">
+      <div class="feature-icon">👩‍🏫</div>
+      <div class="feature-title">Expert Instructors</div>
+      <div class="feature-desc">Learn from STEM professionals and educators.</div>
+    </div>
+    <div class="feature" tabindex="0" role="article" aria-label="Flexible learning">
+      <div class="feature-icon">⏰</div>
+      <div class="feature-title">Flexible Learning</div>
+      <div class="feature-desc">Study at your own pace, anytime, anywhere.</div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" role="region" aria-labelledby="courses-title">
+  <h2 id="courses-title">Our Courses</h2>
+  <div class="courses-grid">
+
+    <div class="course" tabindex="0" role="article" aria-labelledby="course1-title">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=60" alt="Math formulas on blackboard"/>
+      <div class="course-content">
+        <h3 id="course1-title" class="course-title">Advanced Mathematics</h3>
+        <p class="course-desc">Dive deep into algebra, calculus, and geometry with challenging problems.</p>
+        <button class="course-btn" onclick="alert('Course coming soon!')">Learn More</button>
+      </div>
+    </div>
+
+    <div class="course" tabindex="0" role="article" aria-labelledby="course2-title">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=60" alt="Computer code on screen"/>
+      <div class="course-content">
+        <h3 id="course2-title" class="course-title">Programming Fundamentals</h3>
+        <p class="course-desc">Get started with Python, JavaScript, and core programming concepts.</p>
+        <button class="course-btn" onclick="alert('Course coming soon!')">Learn More</button>
+      </div>
+    </div>
+
+    <div class="course" tabindex="0" role="article" aria-labelledby="course3-title">
+      <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=600&q=60" alt="Robotics arm"/>
+      <div class="course-content">
+        <h3 id="course3-title" class="course-title">Introduction to Robotics</h3>
+        <p class="course-desc">Explore sensors, actuators, and control systems with hands-on projects.</p>
+        <button class="course-btn" onclick="alert('Course coming soon!')">Learn More</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="quiz" role="region" aria-labelledby="quiz-title">
+  <h2 id="quiz-title">Test Your Knowledge</h2>
+  <div id="quiz-container" role="main" aria-live="polite">
+    <div id="question" class="quiz-question" tabindex="0"></div>
+    <ul id="options" class="quiz-options"></ul>
+    <div class="quiz-footer">
+      <button id="next-btn" disabled aria-disabled="true">Next</button>
+    </div>
+    <div id="score-container" hidden></div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <p>© 2025 STEM Academy. All rights reserved.</p>
+</footer>
+
+<script>
+  const quizData = [
+    {
+      question: "What does STEM stand for?",
+      options: ["Science, Technology, Engineering, Math", "Social, Tech, English, Music", "Sports, Teaching, Environment, Medicine", "Science, Trade, Economy, Marketing"],
+      correct: 0,
+    },
+    {
+      question: "What is the chemical symbol for water?",
+      options: ["WO", "H2O", "O2", "HO2"],
+      correct: 1,
+    },
+    {
+      question: "Which planet is known as the Red Planet?",
+      options: ["Venus", "Mars", "Jupiter", "Saturn"],
+      correct: 1,
+    },
+    {
+      question: "Which language is primarily used for web development?",
+      options: ["Python", "JavaScript", "C++", "Java"],
+      correct: 1,
+    },
+    {
+      question: "Who developed the theory of relativity?",
+      options: ["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Marie Curie"],
+      correct: 1,
+    }
+    // Add more questions here as needed
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  const questionEl = document.getElementById('question');
+  const optionsEl = document.getElementById('options');
+  const nextBtn = document.getElementById('next-btn');
+  const scoreContainer = document.getElementById('score-container');
+
+  // Shuffle helper to randomize questions order
+  function shuffle(array) {
+    for(let i = array.length -1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function loadQuestion() {
+    nextBtn.disabled = true;
+    nextBtn.setAttribute('aria-disabled', 'true');
+    scoreContainer.hidden = true;
+    optionsEl.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
+
+    const q = quizData[currentQuestion];
+    questionEl.textContent = `Q${currentQuestion + 1}. ${q.question}`;
+    optionsEl.innerHTML = '';
+
+    q.options.forEach((option, idx) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.disabled = false;
+      btn.className = '';
+      btn.setAttribute('aria-pressed', 'false');
+      btn.addEventListener('click', () => selectOption(idx, btn));
+      li.appendChild(btn);
+      optionsEl.appendChild(li);
+    });
+  }
+
+  function selectOption(selectedIndex, btn) {
+    const correctIndex = quizData[currentQuestion].correct;
+
+    // Disable all buttons after selection
+    Array.from(optionsEl.children).forEach(li => {
+      li.firstChild.disabled = true;
+    });
+
+    if(selectedIndex === correctIndex){
+      btn.classList.add('correct');
+    } else {
+      btn.classList.add('incorrect');
+      // Highlight correct answer
+      optionsEl.children[correctIndex].firstChild.classList.add('correct');
+    }
+
+    if(selectedIndex === correctIndex) {
+      score++;
+    }
+
+    nextBtn.disabled = false;
+    nextBtn.setAttribute('aria-disabled', 'false');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentQuestion++;
+    if(currentQuestion < quizData.length){
+      loadQuestion();
+    } else {
+      showScoreAndRestart();
+    }
+  });
+
+  function showScoreAndRestart() {
+    questionEl.textContent = `Quiz Complete! Your Score: ${score} / ${quizData.length}`;
+    optionsEl.style.display = 'none';
+    nextBtn.style.display = 'none';
+
+    scoreContainer.hidden = false;
+    scoreContainer.textContent = "Awesome work! Let's try again to improve even more.";
+
+    // Reset quiz after 5 seconds
+    setTimeout(() => {
+      score = 0;
+      currentQuestion = 0;
+      shuffle(quizData);
+      loadQuestion();
+      nextBtn.style.display = 'inline-block';
+    }, 5000);
+  }
+
+  // Initial shuffle for randomness
+  shuffle(quizData);
+  loadQuestion();
+</script>
+
+</body>
+</html>
